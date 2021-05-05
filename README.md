@@ -1,7 +1,7 @@
 # Project 1: FOODAPEDIA
 
 
-<h2 style= "color: green; font-weight: bold;">
+<h2 style= "color: #00FF00; font-weight: bold;">
   Project Proposal
 </h2>
 
