@@ -1,0 +1,54 @@
+body{
+    background-color: rgb(73, 73, 67);
+}
+.background-img {
+    background-image: url("https://www.shamrockfoodservice.com/wp-content/uploads/2020/08/CM_Kitchentelligence-Live-Image-1400x780_0820.jpg");
+    background-color: #cccccc;
+    height: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+
+.header{
+    font-family: 'Courgette', cursive;
+    color: white;
+    background-color: rgba(41,40,40,0.7) ;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:2%; 
+  
+  
+    
+}
+li {
+    display: flex;
+    text-decoration:none;
+    display: inline;
+    padding: 10px 30px;
+    font-size: 25px;
+    
+ 
+ }
+    
+ #start{
+    font-family: 'Courgette', cursive;
+    font-size: 30px;
+    border:2px solid black;
+     background-color: rgb(255, 204, 0);
+     box-shadow: 2px 2px 20px rgb(3, 21, 24) ;
+     border-radius: 10%;
+     padding:40px;
+     margin-left: 43%;
+     margin-top: 10%;
+ }
+
+ .container{
+    font-family: 'Courgette', cursive;
+    margin-left: 0px;
+    color: white;
+    font-size: 40px;
+ }
