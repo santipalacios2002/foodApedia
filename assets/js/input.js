@@ -51,7 +51,6 @@ function recipeInfo(iD) {
 
 
 //event listener for the add to list btn
-
 $('#clickme').on('click', function () {
   console.log('clicked on "add to list" btn')
   var ingredientInput = $('#ingredientsInput').val();
@@ -59,10 +58,12 @@ $('#clickme').on('click', function () {
   buildIngredientli(ingredientInput)
 })
 
-
+//function that builds the ingredient list element
 function buildIngredientli (ingredient) {
   $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
 }
+
+
 // function that stores ingredients in case user refreshes the page
 // function that clears all the ingredients
 
