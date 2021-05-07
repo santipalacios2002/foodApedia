@@ -1,6 +1,6 @@
 // function that receives ingridients
 var recipeBulkTest // will delete later, for testing pusposes only
-var test
+var test //might delete
 function apiRecipes(iOne, iTwo, iThree) {
   $.ajax({
     url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${iOne},${iTwo},${iThree}&number=4&ranking=1`,
@@ -50,9 +50,19 @@ function recipeInfo(iD) {
 }
 
 
+//event listener for the add to list btn
+
+$('#clickme').on('click', function () {
+  console.log('clicked on "add to list" btn')
+  var ingredientInput = $('#ingredientsInput').val();
+  console.log(ingredientInput)
+  buildIngredientli(ingredientInput)
+})
 
 
-
+function buildIngredientli (ingredient) {
+  $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
+}
 // function that stores ingredients in case user refreshes the page
 // function that clears all the ingredients
 
