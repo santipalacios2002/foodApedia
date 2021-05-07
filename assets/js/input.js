@@ -32,6 +32,7 @@ function searchedRecipes(recipesBulk) {
     }); //array for the images of the searched recipes
     console.log(recipes)
   } 
+  buildRecipesEl(recipes)
   return recipes
 }
 
@@ -63,7 +64,19 @@ function buildIngredientli (ingredient) {
   $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
 }
 
-
+//function that builds the recipe elements
+function buildRecipesEl (suggestions) {
+  var containerEl = $('<div>');
+  var headerEl = $('<h3>');
+  var imageEl = $('<img>');
+  imageEl.attr('src', 'https://spoonacular.com/recipeImages/653775-312x231.jpg');
+  imageEl.attr('alt', 'food image')
+  headerEl.text('Open-Face Egg Sandwich with Bacon, Asparagus, and Pesto')
+  containerEl.append(headerEl);
+  containerEl.append(imageEl);
+  $('#recipe-container').append(containerEl);
+  console.log(suggestions)
+}
 // function that stores ingredients in case user refreshes the page
 // function that clears all the ingredients
 
