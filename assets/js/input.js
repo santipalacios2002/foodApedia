@@ -66,16 +66,19 @@ function buildIngredientli (ingredient) {
 
 //function that builds the recipe elements
 function buildRecipesEl (suggestions) {
-  var containerEl = $('<div>');
-  var headerEl = $('<h3>');
-  var imageEl = $('<img>');
-  imageEl.attr('src', 'https://spoonacular.com/recipeImages/653775-312x231.jpg');
-  imageEl.attr('alt', 'food image')
-  headerEl.text('Open-Face Egg Sandwich with Bacon, Asparagus, and Pesto')
-  containerEl.append(headerEl);
-  containerEl.append(imageEl);
-  $('#recipe-container').append(containerEl);
-  console.log(suggestions)
+  for (let index = 0; index < suggestions.length; index++) {
+    var containerEl = $('<div>');
+    var headerEl = $('<h3>');
+    var imageEl = $('<img>');
+    imageEl.attr('src', suggestions[index].picture);
+    imageEl.attr('alt', 'food image')
+    headerEl.text(suggestions[index].name)
+    containerEl.append(headerEl);
+    containerEl.append(imageEl);
+    $('#recipe-container').append(containerEl);
+    console.log(suggestions)
+  }
+  
 }
 // function that stores ingredients in case user refreshes the page
 // function that clears all the ingredients
