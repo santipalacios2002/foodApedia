@@ -52,3 +52,23 @@ li {
     color: white;
     font-size: 40px;
  }
+ 
+
+ #clickme{
+
+    width: 100%;
+ }
+ 
+ .container-2{
+     border: 2px solid black;
+     width: 70%;
+     height: 80vh;;
+     padding: 10%;
+     align-items: center;
+    
+     
+ }
+.row {
+    background-color:   #b8a745;
+
+}
