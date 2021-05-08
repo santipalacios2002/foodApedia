@@ -9,6 +9,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    
   }
   
 
@@ -46,11 +47,14 @@ li {
      margin-top: 10%;
  }
 
- .container{
+ .container h1{
     font-family: 'Courgette', cursive;
     margin-left: 0px;
     color: white;
     font-size: 40px;
+ }
+ .container p{
+     color:beige;
  }
  
 
@@ -68,7 +72,39 @@ li {
     
      
  }
-.row {
+
+ .row {
     background-color:   #b8a745;
 
+}
+
+.lead{
+    font-size: 30px;;
+}
+
+
+#contact{
+    display: flex;
+    text-decoration:none;
+    display: inline;
+    padding: 10px 30px;
+    font-size: 25px;
+}
+#begin{
+    border-bottom: 1px solid white;
+}
+
+.callout{
+ 
+    background-color:rgba(41,40,40,0.7); 
+    display: flex;
+ 
+    align-items: center;
+}
+
+
+
+footer{
+    text-align: center;
+background-color: beige;
 }
