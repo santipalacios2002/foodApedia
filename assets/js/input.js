@@ -4,6 +4,10 @@ $(document).foundation();
 // function that receives ingridients
 var recipeBulkTest // will delete later, for testing pusposes only
 var test //might delete
+
+//variable for reset button 5/8
+var refreshButtonEl = $('#reset');
+
 // click handler for search button
 var mealIngredients = [];
 $('#searchRecipeBtn').click(apiRecipes(mealIngredients));
@@ -13,6 +17,7 @@ function apiRecipes(mealIngredients) {
   console.log('worked!')
   //use meal ingredients to build the URL for the Ajax call
   //ajax calls the URL API and gets the info
+
   $.ajax({
     //use URL above
     url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${iOne},${iTwo},${iThree}&number=4&ranking=1`,
@@ -104,9 +109,14 @@ function buildRecipesEl (suggestions) {
       console.log(event.target)
     })
   }
-  
+ 
+
 }
 
+// function for reset button//
+refreshButtonEl.on('click', function () {
+  location.reload();
+});
 
 // function that stores ingredients in case user refreshes the page
 // function that clears all the ingredients
