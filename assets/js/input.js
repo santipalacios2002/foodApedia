@@ -1,8 +1,7 @@
 //fatimah added foundation tag
 $(document).foundation();
 
-// function that receives ingridients
-var recipeBulkTest // will delete later, for testing pusposes only
+
 var test //might delete
 
 //variable for reset button 5/8
@@ -19,7 +18,7 @@ function apiRecipes() {
   var ingredients = '';
   console.log(mealIngredients)
   for (let index = 0; index < mealIngredients.length; index++) {
-    ingredients = ingredients.concat(`${mealIngredients[index]},`);     
+    ingredients = ingredients.concat(`${mealIngredients[index]},`);
   }
   //ajax calls the URL API and gets the info
   $.ajax({
@@ -27,7 +26,7 @@ function apiRecipes() {
     url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
-  //response = info gathered from API
+    //response = info gathered from API
     .then(function (response) { // runs if no error happens
       console.log('Ajax Reponse \n-------------');
       console.log(response);
@@ -39,28 +38,27 @@ function apiRecipes() {
     });
 }
 
-  //pulls picture and title of recipes
-  function searchedRecipes(recipesBulk) {
-    var recipes = [{
-      'picture': recipesBulk[0].image,
-      'name': recipesBulk[0].title,
-      'recipeId': recipesBulk[0].id
-    }]; //array for the images of the searched recipes 
-    for (let index = 1; index < recipesBulk.length; index++) {
-      recipes.push({
-        'picture': recipesBulk[index].image,
-        'name': recipesBulk[index].title,
-        'recipeId': recipesBulk[index].id
-      }); //array for the images of the searched recipes
-      console.log(recipes)
-    } 
-    // $('#searchRecipeBtn').click()
-    buildRecipesEl(recipes)
-    return recipes
+//pulls picture and title of recipes
+function searchedRecipes(recipesBulk) {
+  var recipes = [{
+    'picture': recipesBulk[0].image,
+    'name': recipesBulk[0].title,
+    'recipeId': recipesBulk[0].id
+  }]; //array for the images of the searched recipes 
+  for (let index = 1; index < recipesBulk.length; index++) {
+    recipes.push({
+      'picture': recipesBulk[index].image,
+      'name': recipesBulk[index].title,
+      'recipeId': recipesBulk[index].id
+    }); //array for the images of the searched recipes
+    console.log(recipes)
   }
- 
+  buildRecipesEl(recipes)
+  return recipes
+}
 
-  
+
+//function that returns recipe information for the actual recipe details 
 function recipeInfo(iD) {
   $.ajax({
     url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=c163ad42a8f44434961017e44052c438`,
@@ -96,17 +94,19 @@ $('#clickme').on('click', function () {
   } else {
     // If mealIngredients is greater than 5 give user feedback alert
     alert('you can only enter 5 ingredients')
-  } 
+    $('#ingredientsInput').val('');
+  }
   console.log(mealIngredients)
 })
 
 //function that builds the ingredient list element
-function buildIngredientli (ingredient) {
-  $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
+function buildIngredientli(ingredient) {
+  $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
 }
 
+
 //function that builds the recipe elements
-function buildRecipesEl (suggestions) {
+function buildRecipesEl(suggestions) {
   for (let index = 0; index < suggestions.length; index++) {
     var containerEl = $('<div>');
     containerEl.addClass('recipe');
@@ -120,11 +120,11 @@ function buildRecipesEl (suggestions) {
     containerEl.append(imageEl);
     $('#recipe-container').append(containerEl);
     console.log(suggestions)
-    $('#recipe-container').children().eq(index).children('img').on('click', function(event) {  //click event for recipes images
+    $('#recipe-container').children().eq(index).children('img').on('click', function (event) {  //click event for recipes images
       console.log(event.target)
     })
   }
- 
+
 
 }
 
