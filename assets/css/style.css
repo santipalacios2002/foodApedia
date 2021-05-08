@@ -63,24 +63,14 @@ li {
     width: 100%;
  }
  
- .container-2{
-     border: 2px solid black;
-     width: 70%;
-     height: 80vh;;
-     padding: 10%;
-     align-items: center;
-    
-     
- }
+
+
 
  .row {
     background-color:   #b8a745;
 
 }
 
-.lead{
-    font-size: 30px;;
-}
 
 
 #contact{
@@ -93,13 +83,32 @@ li {
 #begin{
     border-bottom: 1px solid white;
 }
+.button{
+    
+    box-shadow:2px 2px 5px rgb(3, 21, 24);
+}
+.callout, label{
+ 
+    background-color:rgba(41,40,40,0.7); 
+    display: flex;
+    align-items: center;
+}
+.lead{
+    font-size: 30px;
+    font-family: 'Courgette', cursive;
+    
+}
+    
+
 
 .menu{
  
-    background-color:none; 
+    background-color:rgba(41,40,40,0.7) ; 
     display: flex;
- padding: 20%;
+ padding:20%;
     align-items: center;
+    width: 317%;
+    
 
     
 }
