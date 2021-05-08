@@ -16,11 +16,15 @@ $('#searchRecipeBtn').click(apiRecipes);
 function apiRecipes() {
   console.log('worked!')
   //use meal ingredients to build the URL for the Ajax call
+  var ingredients = '';
+  console.log(mealIngredients)
+  for (let index = 0; index < mealIngredients.length; index++) {
+    ingredients = ingredients.concat(`${mealIngredients[index]},`);     
+  }
   //ajax calls the URL API and gets the info
-
   $.ajax({
     //use URL above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=tofu&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
   //response = info gathered from API
@@ -74,16 +78,26 @@ function recipeInfo(iD) {
 
 //event listener for the add to list btn
 $('#clickme').on('click', function () {
-  //check how long the mealIngriedents is 
+  //check how long the mealIngriedents is
   // If mealIngredients is less than 5 add new food to the array
+  if (mealIngredients.length < 5) {
+    // check if the ingridientsInput is empty
+    if ($('#ingredientsInput').val() == "") {
+      // if ingridentsInput is empty then give user feedback alert
+      alert('please enter the ingredient')
+      return;
+    }
     // append food item to item list
+    var ingredientInput = $('#ingredientsInput').val();
+    buildIngredientli(ingredientInput)
     // add food item to mealIngredients
-  // If mealIngredients is greater than 5 give user feedback alert
-  console.log('clicked on "add to list" btn')
-  var ingredientInput = $('#ingredientsInput').val();
-  $('#ingredientsInput').val('');
-  console.log(ingredientInput)
-  buildIngredientli(ingredientInput)
+    mealIngredients.push($('#ingredientsInput').val())
+    $('#ingredientsInput').val('');
+  } else {
+    // If mealIngredients is greater than 5 give user feedback alert
+    alert('you can only enter 5 ingredients')
+  } 
+  console.log(mealIngredients)
 })
 
 //function that builds the ingredient list element
