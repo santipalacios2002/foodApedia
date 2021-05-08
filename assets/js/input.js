@@ -1,3 +1,6 @@
+//fatimah added foundation tag
+$(document).foundation();
+
 // function that receives ingridients
 var recipeBulkTest // will delete later, for testing pusposes only
 var test //might delete
