@@ -68,6 +68,8 @@ function buildIngredientli (ingredient) {
 function buildRecipesEl (suggestions) {
   for (let index = 0; index < suggestions.length; index++) {
     var containerEl = $('<div>');
+    containerEl.addClass('recipe');
+    containerEl.attr('id', `result-${index + 1}`)
     var headerEl = $('<h3>');
     var imageEl = $('<img>');
     imageEl.attr('src', suggestions[index].picture);
@@ -77,9 +79,14 @@ function buildRecipesEl (suggestions) {
     containerEl.append(imageEl);
     $('#recipe-container').append(containerEl);
     console.log(suggestions)
+    $('#recipe-container').children().eq(index).children('img').on('click', function(event) {  //click event for recipes images
+      console.log(event.target)
+    })
   }
   
 }
+
+
 // function that stores ingredients in case user refreshes the page
 // function that clears all the ingredients
 
