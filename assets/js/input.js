@@ -10,17 +10,17 @@ var refreshButtonEl = $('#reset');
 
 // click handler for search button
 var mealIngredients = [];
-$('#searchRecipeBtn').click(apiRecipes(mealIngredients));
+$('#searchRecipeBtn').click(apiRecipes);
 
 // This function calls the Spoonacular API
-function apiRecipes(mealIngredients) {
+function apiRecipes() {
   console.log('worked!')
   //use meal ingredients to build the URL for the Ajax call
   //ajax calls the URL API and gets the info
 
   $.ajax({
     //use URL above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${iOne},${iTwo},${iThree}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=tofu&number=4&ranking=1`,
     method: 'GET',
   })
   //response = info gathered from API
@@ -81,6 +81,7 @@ $('#clickme').on('click', function () {
   // If mealIngredients is greater than 5 give user feedback alert
   console.log('clicked on "add to list" btn')
   var ingredientInput = $('#ingredientsInput').val();
+  $('#ingredientsInput').val('');
   console.log(ingredientInput)
   buildIngredientli(ingredientInput)
 })
