@@ -29,10 +29,11 @@
 </style>
   <header>
     <section class='header'>
-      <h1 id= "title"><span syle= " font-family: 'Courgette', cursive">FoodApedia</span></h1>
+      <h1 id= "title">FoodApedia</h1>
       <nav>
+        <!-----fixed the about-me link could be activated from any page-->
         <ul>
-          <li ><a href="#about-us"><span style='color:white'>About us</span></a></li>
+          <li ><a href="index.html#about-us"><span style='color:white'>About us</span></a></li>
           <li><a href="#contact"><span style='color: white'>Contact</span></a></li>
         </ul>
       </nav>
@@ -59,23 +60,17 @@
      <div class= 'item-list'>Item list</div>
 
     </div>
-  
-  </div>
-  
+   </div>
   <div class="row column">
     <hr>
   </div>
-  
   <div class="row column">
-    <p class="lead"><span style= "text-decoration: underline;">Choose A Meal</span></p>
+  <p class="lead"><span style= "text-decoration: underline;">Choose A Meal</span></p>
   </div>
-  
- 
-    <div class="row small-up-1 medium-up-2 large-up-3">
+  <div class="row small-up-1 medium-up-2 large-up-3">
    <div class="column">
-      <div id='recipe-container'class="menu">
-       <img class='image'src="https://spoonacular.com/recipeImages/653775-312x231.jpg" alt="food image">
-      <!---------------------------------------------->
+   <div id='recipe-container'class="menu">
+     
     </div>
     </div>
     </div>
@@ -84,7 +79,7 @@
          <div class="menu">
          
 
-            <img class='image'src="https://spoonacular.com/recipeImages/653775-312x231.jpg" alt="food image">
+           
          </div>
          </div>
        </div>
@@ -101,7 +96,9 @@
    </h1>
    
    </footer>
-   
+   <script>
+    document.write('<a href="' + document.referrer + '">#about-us</a>');
+  </script>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>

@@ -19,6 +19,7 @@ function apiRecipes() {
   console.log(mealIngredients)
   for (let index = 0; index < mealIngredients.length; index++) {
     ingredients = ingredients.concat(`${mealIngredients[index]},`);
+    
   }
   //ajax calls the URL API and gets the info
   $.ajax({
@@ -97,11 +98,13 @@ $('#clickme').on('click', function () {
     $('#ingredientsInput').val('');
   }
   console.log(mealIngredients)
+ 
 })
 
 //function that builds the ingredient list element
 function buildIngredientli(ingredient) {
   $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
+
 }
 
 
@@ -137,3 +140,4 @@ refreshButtonEl.on('click', function () {
 // function that clears all the ingredients
 
 
+//just a reminder we have a bug, if they x it out
