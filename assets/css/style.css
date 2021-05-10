@@ -24,6 +24,7 @@ body{
 }
   #title{
       font-size: 40px;
+      font-family: 'Courgette', cursive;
 
   }
   
@@ -59,6 +60,7 @@ li {
  }
  .container p{
      color:beige;
+    font-size: 20px;
  }
  
 
@@ -92,11 +94,19 @@ li {
     background-color: rgb(74, 48, 128);
     box-shadow:2px 2px 5px rgb(3, 21, 24);
 }
+/*added a  fade out animation for the list items when you click x*/
+
 .callout, label{
  
     background-color:rgba(41,40,40,0.7); 
     display: flex;
     align-items: center;
+    transition: all 0.4s ease-out;
+        opacity: 0;
+
+    
+        opacity: 1;
+    
 }
 .lead{
     font-size: 30px;
