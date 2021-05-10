@@ -171,9 +171,9 @@ function buildinstructions(id) {
     if (response.length === 0) {
       console.log('it has no instructions')
     } else {
+      var ulEl = $('<ul>');
+      $('.instructions').append(ulEl);
       for (let index = 0; index < response[0].steps.length; index++) {
-        var ulEl = $('<ul>');
-        $('.instructions').append(ulEl);
         var ingredientsliEl = $('<li>')
         ingredientsliEl.attr('style', 'color: white; background: black')
         ingredientsliEl.text(`${response[0].steps[index].number}. ${response[0].steps[index].step}`)
