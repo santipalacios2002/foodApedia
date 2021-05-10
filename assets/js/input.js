@@ -19,12 +19,12 @@ function apiRecipes() {
   console.log(mealIngredients)
   for (let index = 0; index < mealIngredients.length; index++) {
     ingredients = ingredients.concat(`${mealIngredients[index]},`);
-    
+
   }
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=5d31bfe82c014672b108b9646a510b3f&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -62,12 +62,13 @@ function searchedRecipes(recipesBulk) {
 //function that returns recipe information for the actual recipe details 
 function recipeInfo(iD) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=c163ad42a8f44434961017e44052c438`,
+    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=5d31bfe82c014672b108b9646a510b3f`,
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
       console.log('Ajax Reponse \n-------------');
       console.log(response);
+      buildChosenRecipeEl(response)
     })
     .catch(function (error) { // runs if an error happens
       console.log('error:', error);
@@ -98,7 +99,7 @@ $('#clickme').on('click', function () {
     $('#ingredientsInput').val('');
   }
   console.log(mealIngredients)
- 
+
 })
 
 //function that builds the ingredient list element
@@ -118,18 +119,74 @@ function buildRecipesEl(suggestions) {
     var imageEl = $('<img>');
     imageEl.attr('src', suggestions[index].picture);
     imageEl.attr('alt', 'food image')
+    imageEl.attr('class', suggestions[index].recipeId)
     headerEl.text(suggestions[index].name)
     containerEl.append(headerEl);
     containerEl.append(imageEl);
     $('#recipe-container').append(containerEl);
-    console.log(suggestions)
     $('#recipe-container').children().eq(index).children('img').on('click', function (event) {  //click event for recipes images
-      console.log(event.target)
+      //at the click of the event target, application will take you to the detailed recipe
+      //by extracting the recipe ID and using it in the next API call
+      console.log("this is the event target name", event.target.className)
+      recipeInfo(event.target.className)
     })
   }
+  console.log("these are the suggestions", suggestions)
 
 
 }
+
+
+//funciton that builds the info of the actual chosen recipe (we might put this in a new page):
+function buildChosenRecipeEl(detailedRecipe) {
+  var containerEl = $('<div>');
+  containerEl.attr('class', 'instructions');
+  var headerEl = $('<h4>');
+  headerEl.attr('style', 'color: white; background: black')
+  var ulEl = $('<ul>');
+  headerEl.text(detailedRecipe.title);
+  containerEl.append(headerEl);
+  containerEl.append(ulEl);
+  for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
+    var ingredientsliEl = $('<li>')
+    ingredientsliEl.attr('style', 'color: white; background: black')
+    ingredientsliEl.text(detailedRecipe.extendedIngredients[index].original)
+    ulEl.append(ingredientsliEl)
+  }
+  buildinstructions(detailedRecipe.id);
+  $(containerEl).insertBefore('footer')
+}
+
+function buildinstructions(id) {
+  $.ajax({
+    url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=5d31bfe82c014672b108b9646a510b3f`,
+    method: 'GET',
+  })
+  .then(function (response) { // runs if no error happens
+    console.log('Ajax Reponse steps broken down\n-------------');
+    console.log(response);
+    var header2El = $('<h4>Instructions</h4>');
+    header2El.attr('style', 'color: white; background: black');
+    $('.instructions').append(header2El);
+    if (response.length === 0) {
+      console.log('it has no instructions')
+    } else {
+      for (let index = 0; index < response[0].steps.length; index++) {
+        var ulEl = $('<ul>');
+        $('.instructions').append(ulEl);
+        var ingredientsliEl = $('<li>')
+        ingredientsliEl.attr('style', 'color: white; background: black')
+        ingredientsliEl.text(`${response[0].steps[index].number}. ${response[0].steps[index].step}`)
+        ulEl.append(ingredientsliEl)
+      }
+    }
+  })
+  .catch(function (error) { // runs if an error happens
+    console.log('error:', error);
+  });
+}
+
+
 
 // function for reset button//
 refreshButtonEl.on('click', function () {
