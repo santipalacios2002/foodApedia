@@ -59,22 +59,6 @@ function searchedRecipes(recipesBulk) {
 }
 
 
-//function that returns recipe information for the actual recipe details 
-function recipeInfo(iD) {
-  $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
-    method: 'GET',
-  })
-    .then(function (response) { // runs if no error happens
-      console.log('Ajax Reponse \n-------------');
-      console.log(response);
-      buildChosenRecipeEl(response)
-    })
-    .catch(function (error) { // runs if an error happens
-      console.log('error:', error);
-    });
-}
-
 
 //event listener for the add to list btn
 $('#clickme').on('click', function () {
@@ -83,7 +67,6 @@ $('#clickme').on('click', function () {
   if (mealIngredients.length < 5) {
     // check if the ingridientsInput is empty
     if ($('#ingredientsInput').val() == "") {
-      console.log('#ingredientsInput:', #ingredientsInput)
       // if ingridentsInput is empty then give user feedback alert
       alert('please enter the ingredient')
       return;
@@ -103,12 +86,19 @@ $('#clickme').on('click', function () {
 
 })
 
+//clear history
+function showClear() {
+  if (searchHistoryList.text() !== "") {
+      clearHistoryBtn.removeClass("hide");
+  }
+}
+
+
 //function that builds the ingredient list element
 function buildIngredientli(ingredient) {
   $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
 
 }
-
 
 //function that builds the recipe elements
 function buildRecipesEl(suggestions) {
@@ -119,6 +109,7 @@ function buildRecipesEl(suggestions) {
     var headerEl = $('<h4>');
     headerEl.attr('style', 'font-family:Courgette, cursive; color:beige')
     var imageEl = $('<img>');
+    var redirectUrl = './recipe.html'
     
     // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
     imageEl.attr('src', suggestions[index].picture);
@@ -132,64 +123,21 @@ function buildRecipesEl(suggestions) {
       //at the click of the event target, application will take you to the detailed recipe
       //by extracting the recipe ID and using it in the next API call
       console.log("this is the event target name", event.target.className)
-      recipeInfo(event.target.className)
+      // recipeInfo(event.target.className)
+
+      localStorage.setItem("chosenMeal", JSON.stringify(event.target.className));
+
+    
+      document.location.assign(redirectUrl)
+     
     })
   }
   console.log("these are the suggestions", suggestions)
 
-
 }
 
 
-//funciton that builds the info of the actual chosen recipe (we might put this in a new page):
-function buildChosenRecipeEl(detailedRecipe) {
-  var containerEl = $('<div>');
-  containerEl.attr('class', 'instructions');
-  var headerEl = $('<h4>');
-  headerEl.attr('style', 'color: black; background: beige; display: grid')
-  var ulEl = $('<ul>');
-  headerEl.text(detailedRecipe.title);
-  containerEl.append(headerEl);
-  containerEl.append(ulEl);
-  containerEl.attr('style', 'width: 100px')
-  for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
-    var ingredientsliEl = $('<li>')
-    ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
-    ingredientsliEl.text(detailedRecipe.extendedIngredients[index].original)
-    ulEl.append(ingredientsliEl)
-  }
-  buildinstructions(detailedRecipe.id);
-  $(containerEl).insertBefore('footer')
-}
 
-function buildinstructions(id) {
-  $.ajax({
-    url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
-    method: 'GET',
-  })
-  .then(function (response) { // runs if no error happens
-    console.log('Ajax Reponse steps broken down\n-------------');
-    console.log(response);
-    var header2El = $('<h4>Instructions</h4>');
-    header2El.attr('style', 'color: black; background: beige; display: grid');
-    $('.instructions').append(header2El);
-    if (response.length === 0) {
-      console.log('it has no instructions')
-    } else {
-      var ulEl = $('<ul>');
-      $('.instructions').append(ulEl);
-      for (let index = 0; index < response[0].steps.length; index++) {
-        var ingredientsliEl = $('<li>')
-        ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
-        ingredientsliEl.text(`${response[0].steps[index].number}. ${response[0].steps[index].step}`)
-        ulEl.append(ingredientsliEl)
-      }
-    }
-  })
-  .catch(function (error) { // runs if an error happens
-    console.log('error:', error);
-  });
-}
 
 
 
