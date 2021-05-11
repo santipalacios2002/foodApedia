@@ -24,7 +24,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=b932102ca6a844bea90867914818585c&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -57,7 +57,6 @@ function searchedRecipes(recipesBulk) {
   buildRecipesEl(recipes)
   return recipes
 }
-
 
 
 //event listener for the add to list btn
@@ -135,9 +134,6 @@ function buildRecipesEl(suggestions) {
   console.log("these are the suggestions", suggestions)
 
 }
-
-
-
 
 
 
