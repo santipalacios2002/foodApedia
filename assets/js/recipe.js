@@ -22,8 +22,12 @@
     var headerEl = $('<h4>');
     headerEl.attr('style', 'color: black; background: beige; display: grid')
     var ulEl = $('<ul>');
+    var imageEl = $('<img>');
+    imageEl.attr('src', detailedRecipe.image);
+    imageEl.attr('alt', 'food image');
     headerEl.text(detailedRecipe.title);
     containerEl.append(headerEl);
+    containerEl.append(imageEl);
     containerEl.append(ulEl);
     containerEl.attr('style', 'width: 100px')
     for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
