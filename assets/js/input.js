@@ -83,6 +83,7 @@ $('#clickme').on('click', function () {
   if (mealIngredients.length < 5) {
     // check if the ingridientsInput is empty
     if ($('#ingredientsInput').val() == "") {
+      console.log('#ingredientsInput:', #ingredientsInput)
       // if ingridentsInput is empty then give user feedback alert
       alert('please enter the ingredient')
       return;
