@@ -118,7 +118,8 @@ function buildRecipesEl(suggestions) {
     var headerEl = $('<h4>');
     headerEl.attr('style', 'font-family:Courgette, cursive; color:beige')
     var imageEl = $('<img>');
-    imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
+    
+    // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
     imageEl.attr('src', suggestions[index].picture);
     imageEl.attr('alt', 'food image')
     imageEl.attr('class', suggestions[index].recipeId)
@@ -149,6 +150,7 @@ function buildChosenRecipeEl(detailedRecipe) {
   headerEl.text(detailedRecipe.title);
   containerEl.append(headerEl);
   containerEl.append(ulEl);
+  containerEl.attr('style', 'width: 100px')
   for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
     ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
