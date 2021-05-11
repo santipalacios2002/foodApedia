@@ -24,7 +24,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=5d31bfe82c014672b108b9646a510b3f&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -62,7 +62,7 @@ function searchedRecipes(recipesBulk) {
 //function that returns recipe information for the actual recipe details 
 function recipeInfo(iD) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=5d31bfe82c014672b108b9646a510b3f`,
+    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
@@ -115,8 +115,11 @@ function buildRecipesEl(suggestions) {
     var containerEl = $('<div>');
     containerEl.addClass('recipe');
     containerEl.attr('id', `result-${index + 1}`)
-    var headerEl = $('<h3>');
+    var headerEl = $('<h4>');
+    headerEl.attr('style', 'font-family:Courgette, cursive; color:beige')
     var imageEl = $('<img>');
+    
+    // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
     imageEl.attr('src', suggestions[index].picture);
     imageEl.attr('alt', 'food image')
     imageEl.attr('class', suggestions[index].recipeId)
@@ -142,14 +145,15 @@ function buildChosenRecipeEl(detailedRecipe) {
   var containerEl = $('<div>');
   containerEl.attr('class', 'instructions');
   var headerEl = $('<h4>');
-  headerEl.attr('style', 'color: white; background: black')
+  headerEl.attr('style', 'color: black; background: beige; display: grid')
   var ulEl = $('<ul>');
   headerEl.text(detailedRecipe.title);
   containerEl.append(headerEl);
   containerEl.append(ulEl);
+  containerEl.attr('style', 'width: 100px')
   for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
-    ingredientsliEl.attr('style', 'color: white; background: black')
+    ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
     ingredientsliEl.text(detailedRecipe.extendedIngredients[index].original)
     ulEl.append(ingredientsliEl)
   }
@@ -159,14 +163,14 @@ function buildChosenRecipeEl(detailedRecipe) {
 
 function buildinstructions(id) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=5d31bfe82c014672b108b9646a510b3f`,
+    url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
     method: 'GET',
   })
   .then(function (response) { // runs if no error happens
     console.log('Ajax Reponse steps broken down\n-------------');
     console.log(response);
     var header2El = $('<h4>Instructions</h4>');
-    header2El.attr('style', 'color: white; background: black');
+    header2El.attr('style', 'color: black; background: beige; display: grid');
     $('.instructions').append(header2El);
     if (response.length === 0) {
       console.log('it has no instructions')
@@ -175,7 +179,7 @@ function buildinstructions(id) {
       $('.instructions').append(ulEl);
       for (let index = 0; index < response[0].steps.length; index++) {
         var ingredientsliEl = $('<li>')
-        ingredientsliEl.attr('style', 'color: white; background: black')
+        ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
         ingredientsliEl.text(`${response[0].steps[index].number}. ${response[0].steps[index].step}`)
         ulEl.append(ingredientsliEl)
       }
