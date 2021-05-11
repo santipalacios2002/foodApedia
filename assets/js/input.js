@@ -24,7 +24,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=b932102ca6a844bea90867914818585c&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -62,7 +62,7 @@ function searchedRecipes(recipesBulk) {
 //function that returns recipe information for the actual recipe details 
 function recipeInfo(iD) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
+    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=b932102ca6a844bea90867914818585c`,
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
@@ -150,7 +150,6 @@ function buildChosenRecipeEl(detailedRecipe) {
   headerEl.text(detailedRecipe.title);
   containerEl.append(headerEl);
   containerEl.append(ulEl);
-  containerEl.attr('style', 'width: 100px')
   for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
     ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
@@ -158,12 +157,13 @@ function buildChosenRecipeEl(detailedRecipe) {
     ulEl.append(ingredientsliEl)
   }
   buildinstructions(detailedRecipe.id);
+  // $('#recipe').append(containerEl)
   $(containerEl).insertBefore('footer')
-}
+ }
 
 function buildinstructions(id) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
+    url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=b932102ca6a844bea90867914818585c`,
     method: 'GET',
   })
   .then(function (response) { // runs if no error happens

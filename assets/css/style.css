@@ -142,7 +142,18 @@ transition: 1s ease;
 }
 
 
+#back{
 
+    width: 30%;
+    border: white;
+    color: white;
+    background-color:rgb(74, 48, 128);
+}
+
+.row{
+    display: grid;
+   
+}
 footer{
     text-align: center;
 background-color: beige;
