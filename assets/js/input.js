@@ -108,6 +108,7 @@ function buildRecipesEl(suggestions) {
     var headerEl = $('<h4>');
     headerEl.attr('style', 'font-family:Courgette, cursive; color:beige')
     var imageEl = $('<img>');
+    $('img').css('cursor', 'pointer');
     var redirectUrl = './recipe.html'
     
     // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
@@ -125,7 +126,7 @@ function buildRecipesEl(suggestions) {
       // recipeInfo(event.target.className)
 
       localStorage.setItem("chosenMeal", JSON.stringify(event.target.className));
-
+      localStorage.setItem('responseForBackBtn', JSON.stringify(suggestions));
     
       document.location.assign(redirectUrl)
      
