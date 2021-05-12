@@ -6,5 +6,3 @@ $('#start').on('click', function () {
     document.location.replace(redirectUrl)
   })
 
-
-  
