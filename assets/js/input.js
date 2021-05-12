@@ -24,7 +24,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=7b25b6057a3f4e83b5f38c6173d65341&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -114,7 +114,7 @@ function buildRecipesEl(suggestions) {
     containerEl.addClass('recipe');
     containerEl.attr('id', `result-${index + 1}`)
     var headerEl = $('<h4>');
-    headerEl.attr('style', 'font-family:Courgette, cursive; color:beige')
+    headerEl.attr('style', 'font-family:Courgette, cursive; color:black')
     var imageEl = $('<img>');
     $('img').css('cursor', 'pointer');
     var redirectUrl = './recipe.html'

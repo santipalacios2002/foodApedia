@@ -28,9 +28,10 @@ function buildChosenRecipeEl(detailedRecipe) {
   var containerEl = $('<div>');
   containerEl.attr('class', 'instructions');
   var headerEl = $('<h4>');
-  headerEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:600%;')
+  headerEl.attr('style', 'font-family: Courgette, cursive; text-decoration: underline; color: black; background-color:none ; display: grid; width:100%;')
   var ulEl = $('<ul>');
   var imageEl = $('<img>');
+  imageEl.attr('style', ' -webkit-transform: none;-ms-transform: none;transform: none;transition: none;')
   imageEl.attr('src', detailedRecipe.image);
   imageEl.attr('alt', 'food image');
   headerEl.text(detailedRecipe.title);
@@ -40,7 +41,7 @@ function buildChosenRecipeEl(detailedRecipe) {
   containerEl.attr('style', 'padding:10%')
   for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
-    ingredientsliEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:600%;')
+    ingredientsliEl.attr('style', 'color: black; background-color:none ; font-size:20px; display: grid; width:100%;')
     ingredientsliEl.text(detailedRecipe.extendedIngredients[index].original)
     ulEl.append(ingredientsliEl)
   }
