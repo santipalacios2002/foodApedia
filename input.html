@@ -28,7 +28,7 @@
     position: relative;
   }
 </style>
-
+<body>
   <header>
     <section class='header'>
       <h1 id= "title">FoodApedia</h1>
@@ -36,17 +36,16 @@
         <!-----fixed the about-me link could be activated from any page-->
         <ul>
           <li ><a href="index.html#about-us"><span style='color:white'>About us</span></a></li>
-          <li><a href="#contact"><span style='color: white'>Contact</span></a></li>
+          <li><a href="index.html#contact"><span style='color: white'>Contact</span></a></li>
         </ul>
       </nav>
     </section>
 
   </header>
-
-<div class="row">
-
-  <div id="begin" class="medium-7 large-6 columns">
-    <h1><span style="font-family: Courgette, cursive" ;>Choose Your Food and We Will Do the Rest For You!</span></h1>
+  <div id= 'back-ground'>
+      <div class="row">
+    <div id="begin" class="medium-7 large-6 columns">
+    <h1><span style="font-family: Courgette, cursive">Choose Your Food and We Will Do the Rest For You!</span></h1>
     <p class="subheader"></p>
     <label for="ingredientsInput" class="form-label"></label>
     <input type="text" class="form-control" id="ingredientsInput" placeholder="Place Food Items Here">
@@ -54,6 +53,7 @@
     <button type="submit" id='clickme' class="button">Add to List</button>
     <button class="button" id='searchRecipeBtn'>Search for recipe Ideas</button>
     <button id='reset' class="button">Reset</button>
+    <p><strong>Note:</strong>Additional ingrediants might be added</p>
   </div>
 
 
@@ -70,8 +70,11 @@
 
 <div class="row column">
   <p class="lead"><span style="text-decoration: underline;">Choose A Meal</span></p>
+
 </div>
+
 <div class="row small-up-1 medium-up-2 large-up-3">
+  
   <div class="column">
     <div id='recipe-container' class="menu">
 
@@ -86,19 +89,8 @@
   </div>
   
 </div>
+</div>
 
-<footer>
-  <h1 id="contact">Contact</span>
-  <ul>
-      <li><a href="#">Email</a>
-      <li> <a href="#">Twitter</a>
-      <li><a href="#">Linkedin</a></li>
-      <li> <a href="#">Github</a></li>
-    </ul>
-    </div>
-  </h1>
-
-</footer>
 
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -109,5 +101,6 @@
 <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
   integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
 <script src="./assets/js/input.js"></script>
-</body>
 
+</body>
+</html>

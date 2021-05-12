@@ -20,7 +20,7 @@
     var containerEl = $('<div>');
     containerEl.attr('class', 'instructions');
     var headerEl = $('<h4>');
-    headerEl.attr('style', 'color: black; background: beige; display: grid')
+    headerEl.attr('style', 'color: black; background: beige; display: grid; width:200%;')
     var ulEl = $('<ul>');
     var imageEl = $('<img>');
     imageEl.attr('src', detailedRecipe.image);
@@ -32,12 +32,13 @@
     containerEl.attr('style', 'width: 100px')
     for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
       var ingredientsliEl = $('<li>')
-      ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
+      ingredientsliEl.attr('style', 'color: black; background: beige; display: grid; width:200%;')
       ingredientsliEl.text(detailedRecipe.extendedIngredients[index].original)
       ulEl.append(ingredientsliEl)
     }
     buildinstructions(detailedRecipe.id);
-    $(containerEl).insertBefore('footer')
+    $('.row').append(containerEl)
+    // $(containerEl).insertBefore('footer')
   }
   
   function buildinstructions(id) {
@@ -58,7 +59,7 @@
         $('.instructions').append(ulEl);
         for (let index = 0; index < response[0].steps.length; index++) {
           var ingredientsliEl = $('<li>')
-          ingredientsliEl.attr('style', 'color: black; background: beige; display: grid')
+          ingredientsliEl.attr('style', 'color: black; background: beige; display: grid; width:600%')
           ingredientsliEl.text(`${response[0].steps[index].number}. ${response[0].steps[index].step}`)
           ulEl.append(ingredientsliEl)
         }
