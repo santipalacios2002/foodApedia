@@ -66,7 +66,7 @@ $('#clickme').on('click', function () {
   if (mealIngredients.length < 5) {
     // check if the ingridientsInput is empty
     if ($('#ingredientsInput').val() == "") {
-      // if ingridentsInput is empty then give user feedback alert .... this needs to be changed to modal
+      // if ingridentsInput is empty then give user feedback alert .... this needs to be changed to modal ''''SAVANNAH
       alert('please enter the ingredient')
       return;
     }
@@ -77,7 +77,7 @@ $('#clickme').on('click', function () {
     mealIngredients.push($('#ingredientsInput').val())
     $('#ingredientsInput').val('');
   } else {
-    // If mealIngredients is greater than 5 give user feedback alert .... this needs to be changed to modal
+    // If mealIngredients is greater than 5 give user feedback alert .... this needs to be changed to modal '''''SAVANNAH
     alert('you can only enter 5 ingredients')
     $('#ingredientsInput').val('');
   }
@@ -144,14 +144,15 @@ function buildRecipesEl(suggestions) {
 
 
 // function for reset button//
-resetButtonEl.on('click', function () {
+resetButtonEl.on('click', function () { //'''''SAVANNAH
   //load the responseForBackBtn information from the most recent search
     //if responseForBackBtn doesn't exist then don't build the information from recent search
   location.reload();
 });
 
-// function that stores ingredients in case user refreshes the page
-// function that clears all the ingredients
+//funtion or straight js code that checks if there is some stored recipes  //'''''SAVANNAH
+  //if stored recipe exists in sotrage then call the buildRecipesEl
+  //if not, then do nothing
 
 
-//just a reminder we have a bug, if they x it out
+
