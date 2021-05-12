@@ -29,7 +29,7 @@
     containerEl.append(headerEl);
     containerEl.append(imageEl);
     containerEl.append(ulEl);
-    containerEl.attr('style', 'width: 100px')
+    containerEl.attr('style', 'padding:10%')
     for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
       var ingredientsliEl = $('<li>')
       ingredientsliEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:600%;')
