@@ -5,7 +5,7 @@ $(document).foundation();
 var test //might delete
 
 //variable for reset button 5/8
-var refreshButtonEl = $('#reset');
+var resetButtonEl = $('#reset');
 
 // click handler for search button
 var mealIngredients = [];
@@ -66,7 +66,7 @@ $('#clickme').on('click', function () {
   if (mealIngredients.length < 5) {
     // check if the ingridientsInput is empty
     if ($('#ingredientsInput').val() == "") {
-      // if ingridentsInput is empty then give user feedback alert
+      // if ingridentsInput is empty then give user feedback alert .... this needs to be changed to modal
       alert('please enter the ingredient')
       return;
     }
@@ -77,7 +77,7 @@ $('#clickme').on('click', function () {
     mealIngredients.push($('#ingredientsInput').val())
     $('#ingredientsInput').val('');
   } else {
-    // If mealIngredients is greater than 5 give user feedback alert
+    // If mealIngredients is greater than 5 give user feedback alert .... this needs to be changed to modal
     alert('you can only enter 5 ingredients')
     $('#ingredientsInput').val('');
   }
@@ -95,8 +95,10 @@ function showClear() {
 
 //function that builds the ingredient list element
 function buildIngredientli(ingredient) {
-  $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
-
+  $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item ${ingredient}" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
+    $('#gap').on('click','.close-button', function(event){
+      console.log(event.target.classList[1])
+     });
 }
 
 //function that builds the recipe elements
@@ -122,9 +124,6 @@ function buildRecipesEl(suggestions) {
     $('#recipe-container').children().eq(index).children('img').on('click', function (event) {  //click event for recipes images
       //at the click of the event target, application will take you to the detailed recipe
       //by extracting the recipe ID and using it in the next API call
-      console.log("this is the event target name", event.target.className)
-      // recipeInfo(event.target.className)
-
       localStorage.setItem("chosenMeal", JSON.stringify(event.target.className));
       localStorage.setItem('responseForBackBtn', JSON.stringify(suggestions));
     
@@ -139,7 +138,9 @@ function buildRecipesEl(suggestions) {
 
 
 // function for reset button//
-refreshButtonEl.on('click', function () {
+resetButtonEl.on('click', function () {
+  //load the responseForBackBtn information from the most recent search
+    //if responseForBackBtn doesn't exist then don't build the information from recent search
   location.reload();
 });
 
