@@ -96,8 +96,14 @@ function showClear() {
 //function that builds the ingredient list element
 function buildIngredientli(ingredient) {
   $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item ${ingredient}" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
-    $('#gap').on('click','.close-button', function(event){
-      console.log(event.target.classList[1])
+  //if the 'x' is clicked, this function will get rid of the item in the main mealIngredients array
+  $('#gap').on('click','.close-button', function(event){
+      var deletedIngredient = event.target.classList[1];
+      //if deletedIngredient exists in the mealIngredients then take it out of the mealIngredients array
+      console.log(mealIngredients.indexOf(deletedIngredient))
+      if (mealIngredients.indexOf(deletedIngredient) > -1) {
+        mealIngredients.splice(mealIngredients.indexOf(deletedIngredient), 1);
+      }
      });
 }
 
