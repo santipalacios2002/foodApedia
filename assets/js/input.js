@@ -24,7 +24,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=b932102ca6a844bea90867914818585c&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API

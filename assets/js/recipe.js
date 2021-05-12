@@ -2,7 +2,11 @@
 //function that returns recipe information for the actual recipe details 
 
     $.ajax({
+<<<<<<< HEAD
       url: `https://api.spoonacular.com/recipes/${JSON.parse(localStorage.getItem("chosenMeal"))}/information?apiKey=b932102ca6a844bea90867914818585c`,
+=======
+      url: `https://api.spoonacular.com/recipes/${JSON.parse(localStorage.getItem("chosenMeal"))}/information?apiKey=c163ad42a8f44434961017e44052c438`,
+>>>>>>> 8bf7ef1680128fb39f86677ca37ad34524d5d8ed
       method: 'GET',
     })
       .then(function (response) { // runs if no error happens
@@ -43,7 +47,11 @@
   
   function buildinstructions(id) {
     $.ajax({
+<<<<<<< HEAD
       url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=b932102ca6a844bea90867914818585c`,
+=======
+      url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=c163ad42a8f44434961017e44052c438`,
+>>>>>>> 8bf7ef1680128fb39f86677ca37ad34524d5d8ed
       method: 'GET',
     })
     .then(function (response) { // runs if no error happens
