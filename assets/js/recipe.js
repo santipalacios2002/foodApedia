@@ -59,7 +59,7 @@ function buildinstructions(id) {
       console.log('Ajax Reponse steps broken down\n-------------');
       console.log(response);
       var header2El = $('<h4>Instructions</h4>');
-      header2El.attr('style', 'color: black; background: #b8a745; ; display: grid; width:600%');
+      header2El.attr('style', 'color: black; background: #b8a745; ; display: grid; width:100%');
       $('.instructions').append(header2El);
       if (response.length === 0) {
         console.log('it has no instructions')
@@ -68,7 +68,7 @@ function buildinstructions(id) {
         $('.instructions').append(ulEl);
         for (let index = 0; index < response[0].steps.length; index++) {
           var ingredientsliEl = $('<li>')
-          ingredientsliEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:600%')
+          ingredientsliEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:100%')
           ingredientsliEl.text(`${response[0].steps[index].number}. ${response[0].steps[index].step}`)
           ulEl.append(ingredientsliEl)
         }
