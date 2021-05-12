@@ -71,11 +71,19 @@ li {
  
 
 
+   
+ 
+ 
+
+
 
  .row {
-    background-color:   #b8a745;
+    background-color: #b8a745;
+   display: grid;;
+    padding: 10%;
    border-right: 1px solid beige;
    border-left: 1px solid beige;
+
 
 }
 
@@ -132,7 +140,7 @@ transition: 1s ease;
 .menu{
  
 
-    background-color:rgba(41,40,40,0.7) ; 
+    background-color:none ; 
     display: flex;
  padding:10%;
     align-items: center;
