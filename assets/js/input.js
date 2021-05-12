@@ -5,7 +5,7 @@ $(document).foundation();
 var test //might delete
 
 //variable for reset button 5/8
-var refreshButtonEl = $('#reset');
+var resetButtonEl = $('#reset');
 
 // click handler for search button
 var mealIngredients = [];
@@ -122,9 +122,6 @@ function buildRecipesEl(suggestions) {
     $('#recipe-container').children().eq(index).children('img').on('click', function (event) {  //click event for recipes images
       //at the click of the event target, application will take you to the detailed recipe
       //by extracting the recipe ID and using it in the next API call
-      console.log("this is the event target name", event.target.className)
-      // recipeInfo(event.target.className)
-
       localStorage.setItem("chosenMeal", JSON.stringify(event.target.className));
       localStorage.setItem('responseForBackBtn', JSON.stringify(suggestions));
     
@@ -139,7 +136,9 @@ function buildRecipesEl(suggestions) {
 
 
 // function for reset button//
-refreshButtonEl.on('click', function () {
+resetButtonEl.on('click', function () {
+  //load the responseForBackBtn information from the most recent search
+    //if responseForBackBtn doesn't exist then don't build the information from recent search
   location.reload();
 });
 
