@@ -81,19 +81,27 @@ transition: 1s ease;
     width: 100%;
  }
  
+.row {
+      font-family: Arial;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow:
+    
+      inset #3b3201 0 0 0 6px, 
+      inset #635d3c 0 0 0 8px, 
+      inset #726624 0 0 0 12px,
+      inset #978e4f 0 0 0 15px,
+      inset #dbc64c 0 0 0 18px,  
+      inset #f8f4dd 0 0 0 22px;
 
-
-   
- 
- 
-
-
-
- .row {
     background-color: #b8a745;
-   display: grid;
-    border-right: 1px solid beige;
-   border-left: 1px solid beige;
+
+    border-right:3px outset beige;
+   border-left: px outset beige;
 
 
 }
@@ -102,7 +110,8 @@ img{
     transition: 1s ease;
     border: 3px solid black;
      box-shadow: 10px 10px 10px black;
-      display: grid; gap:30px;
+      display: grid;
+     
 }
 img:hover{
     -webkit-transform: scale(1.2);
