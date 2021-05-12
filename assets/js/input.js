@@ -66,7 +66,7 @@ $('#clickme').on('click', function () {
   if (mealIngredients.length < 5) {
     // check if the ingridientsInput is empty
     if ($('#ingredientsInput').val() == "") {
-      // if ingridentsInput is empty then give user feedback alert
+      // if ingridentsInput is empty then give user feedback alert .... this needs to be changed to modal
       alert('please enter the ingredient')
       return;
     }
@@ -77,7 +77,7 @@ $('#clickme').on('click', function () {
     mealIngredients.push($('#ingredientsInput').val())
     $('#ingredientsInput').val('');
   } else {
-    // If mealIngredients is greater than 5 give user feedback alert
+    // If mealIngredients is greater than 5 give user feedback alert .... this needs to be changed to modal
     alert('you can only enter 5 ingredients')
     $('#ingredientsInput').val('');
   }
@@ -95,8 +95,10 @@ function showClear() {
 
 //function that builds the ingredient list element
 function buildIngredientli(ingredient) {
-  $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
-
+  $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item ${ingredient}" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
+    $('#gap').on('click','.close-button', function(event){
+      console.log(event.target.classList[1])
+     });
 }
 
 //function that builds the recipe elements
