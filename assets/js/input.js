@@ -88,7 +88,7 @@ $('#clickme').on('click', function () {
 //clear history
 function showClear() {
   if (searchHistoryList.text() !== "") {
-      clearHistoryBtn.removeClass("hide");
+    clearHistoryBtn.removeClass("hide");
   }
 }
 
@@ -97,14 +97,14 @@ function showClear() {
 function buildIngredientli(ingredient) {
   $('#gap').append(`<div class="callout" data-closable><button class="close-button" aria-label="Close alert" type="button" data-close><span class="item ${ingredient}" aria-hidden="true">&#10008;</span></button> <p>${ingredient}</p></div>`)
   //if the 'x' is clicked, this function will get rid of the item in the main mealIngredients array
-  $('#gap').on('click','.close-button', function(event){
-      var deletedIngredient = event.target.classList[1];
-      //if deletedIngredient exists in the mealIngredients then take it out of the mealIngredients array
-      console.log(mealIngredients.indexOf(deletedIngredient))
-      if (mealIngredients.indexOf(deletedIngredient) > -1) {
-        mealIngredients.splice(mealIngredients.indexOf(deletedIngredient), 1);
-      }
-     });
+  $('#gap').on('click', '.close-button', function (event) {
+    var deletedIngredient = event.target.classList[1];
+    //if deletedIngredient exists in the mealIngredients then take it out of the mealIngredients array
+    console.log(mealIngredients.indexOf(deletedIngredient))
+    if (mealIngredients.indexOf(deletedIngredient) > -1) {
+      mealIngredients.splice(mealIngredients.indexOf(deletedIngredient), 1);
+    }
+  });
 }
 
 //function that builds the recipe elements
@@ -118,7 +118,7 @@ function buildRecipesEl(suggestions) {
     var imageEl = $('<img>');
     $('img').css('cursor', 'pointer');
     var redirectUrl = './recipe.html'
-    
+
     // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
     imageEl.attr('src', suggestions[index].picture);
     imageEl.attr('alt', 'food image')
@@ -132,9 +132,9 @@ function buildRecipesEl(suggestions) {
       //by extracting the recipe ID and using it in the next API call
       localStorage.setItem("chosenMeal", JSON.stringify(event.target.className));
       localStorage.setItem('responseForBackBtn', JSON.stringify(suggestions));
-    
+
       document.location.assign(redirectUrl)
-     
+
     })
   }
   console.log("these are the suggestions", suggestions)
@@ -146,7 +146,7 @@ function buildRecipesEl(suggestions) {
 // function for reset button//
 resetButtonEl.on('click', function () { //'''''SAVANNAH
   //load the responseForBackBtn information from the most recent search
-    //if responseForBackBtn doesn't exist then don't build the information from recent search
+  //if responseForBackBtn doesn't exist then don't build the information from recent search
   location.reload();
 });
 
