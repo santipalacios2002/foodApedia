@@ -91,9 +91,8 @@ transition: 1s ease;
 
  .row {
     background-color: #b8a745;
-   display: grid;;
-    padding: 10%;
-   border-right: 1px solid beige;
+   display: grid;
+    border-right: 1px solid beige;
    border-left: 1px solid beige;
 
 
