@@ -56,7 +56,7 @@
         <label for="ingredientsInput" class="form-label"></label>
         <input type="text" class="form-control" id="ingredientsInput" placeholder="Place Food Items Here">
 
-        <button type="submit" id='clickme' class="button">Add to List</button>
+        <button type="submit" id='clickme' class="button" >Add to List</button>
 
 
         <button class="button" id='searchRecipeBtn'>Search for recipe Ideas</button>
@@ -73,12 +73,12 @@
     </div>
 
 
-    <div class="row column">
+    <div class="row column hidden-container" hidden>
       <p class="lead"><span style="text-decoration: underline;">Choose A Meal</span></p>
 
     </div>
 
-    <div class="row small-up-1 medium-up-2 large-up-3">
+    <div class="row small-up-1 medium-up-2 large-up-3 hidden-container" hidden>
 
       <div class="column">
         <div id='recipe-container' class="menu">
@@ -86,31 +86,55 @@
 
         <div id="recipe-modal" class="modal">
 
-          <div class="reveal" id="result1" data-reveal>
+          <div class="reveal row" id="result1" data-reveal style="margin-left: 50%;">
+            <button class="top-btn" onclick="printDiv('result1')">Print</button>  
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
-          <div class="reveal" id="result2" data-reveal>
+          <div class="reveal row" id="result2" data-reveal style="margin-left: 50%;">
+            <button class="top-btn" onclick="printDiv('result2')">Print</button>
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
-          <div class="reveal" id="result3" data-reveal>
+          <div class="reveal row" id="result3" data-reveal style="margin-left: 50%;">
+            <button class="top-btn" onclick="printDiv('result3')">Print</button>
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
-          <div class="reveal" id="result4" data-reveal>
+          <div class="reveal row" id="result4" data-reveal style="margin-left: 50%;">
+            <button class="top-btn" onclick="printDiv('result4')">Print</button>
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
 
+          
+          <!-- alert modals -->
+          <div class="reveal" id="addListItems" data-reveal>
+            <h1>Please enter at least 1 ingredient</h1>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="reveal" id="fiveIngredients" data-reveal>
+            <h1>Please enter only up to 5 ingredients</h1>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="reveal" id="resetEverything" data-reveal>
+            <h1>Please press reset button first to search for new recipes</h1>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
         </div>
       </div>
