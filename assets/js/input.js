@@ -206,10 +206,6 @@ function buildChosenRecipeModal(localStoredID) {
     location.reload();
   });
 
-$('.reveal').on('click', function(event){
-  console.log(event)
-  console.log(event.target)
-})
 
 function printDiv(recipeChosen) {
   var divContents = document.getElementById(recipeChosen).innerHTML;
