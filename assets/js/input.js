@@ -122,7 +122,7 @@ function recipeInfo(iD) {
       console.log('Ajax Reponse from recipeInfo\n-------------');
       console.log(response);
       localStorage.setItem(`${iD}`, JSON.stringify(response));
-      buildRecipesModal(`${iD}`)
+      buildRecipes(`${iD}`)
       buildChosenRecipeModal(`${iD}`)
     })
     .catch(function (error) { // runs if an error happens
@@ -137,7 +137,7 @@ $('#back').on('click', function () {
 })
 
 //function that builds the recipe elements for the modal to be called ..... this function needs to have the data-open
-function buildRecipesModal(id) {
+function buildRecipes(id) {
   var containerEl = $('<div>');
   containerEl.addClass('recipe');
   containerEl.attr('id', `result${id}`)
