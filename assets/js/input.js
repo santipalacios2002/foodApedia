@@ -122,7 +122,8 @@ function buildRecipesEl(suggestions) {
     // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
     imageEl.attr('src', suggestions[index].picture);
     imageEl.attr('alt', 'food image')
-    imageEl.attr('class', suggestions[index].recipeId)
+    imageEl.attr('class', suggestions[index].recipeId,"button") //added button for modal
+    imageEl.attr('data-open', 'exampleModal1') //added for modal
     headerEl.text(suggestions[index].name)
     containerEl.append(headerEl);
     containerEl.append(imageEl);
@@ -133,7 +134,8 @@ function buildRecipesEl(suggestions) {
       localStorage.setItem("chosenMeal", JSON.stringify(event.target.className));
       localStorage.setItem('responseForBackBtn', JSON.stringify(suggestions));
 
-      document.location.assign(redirectUrl)
+      // document.location.assign(redirectUrl)
+      //took out because we do not want to navigate to new page, but rather modal
 
     })
   }
