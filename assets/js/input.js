@@ -5,8 +5,7 @@ $(document).foundation();
 var resetButtonEl = $('#reset');
 // click handler for search button
 var mealIngredients = [];
-
-
+var result = 1;
 
 //When user adds an ingredient event listener for the "add to list" btn
 $('#clickme').on('click', function () {
@@ -48,10 +47,6 @@ function buildIngredientli(ingredient) {
   });
 }
 
-
-
-
-
 //click event that will trigger when you click on "search for recipe ideas"
 $('#searchRecipeBtn').click(apiRecipes);
 
@@ -68,7 +63,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=5d31bfe82c014672b108b9646a510b3f&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=7b25b6057a3f4e83b5f38c6173d65341&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -97,6 +92,7 @@ function searchedRecipes(recipesBulk) {
       'recipeId': recipesBulk[index].id
     }); //array for the images of the searched recipes
     console.log(recipes)
+    localStorage.setItem("recipes", JSON.stringify(recipes))
   }
   for (let index = 0; index < recipes.length; index++) {
     recipeInfo(recipes[index].recipeId)
@@ -107,7 +103,7 @@ function searchedRecipes(recipesBulk) {
 
 function recipeInfo(iD) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=5d31bfe82c014672b108b9646a510b3f`,
+    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=7b25b6057a3f4e83b5f38c6173d65341`,
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
@@ -115,7 +111,7 @@ function recipeInfo(iD) {
       console.log(response);
       localStorage.setItem(`${iD}`, JSON.stringify(response));
       buildRecipesModal(`${iD}`)
-      // buildChosenRecipeModal()
+      buildChosenRecipeModal(`${iD}`)
     })
     .catch(function (error) { // runs if an error happens
       console.log('error:', error);
@@ -128,126 +124,76 @@ $('#back').on('click', function () {
   document.location.replace(redirectUrl)
 })
 
-
-
-
-
 //function that builds the recipe elements for the modal to be called ..... this function needs to have the data-open
 function buildRecipesModal(id) {
   // for (let index = 0; index < suggestions.length; index++) {
-    var containerEl = $('<div>');
-    containerEl.addClass('recipe');
-    containerEl.attr('id', `resultid-${id}`)
-    var headerEl = $('<h4>');
-    headerEl.attr('style', 'font-family:Courgette, cursive; color:black')
-    var imageEl = $('<img>');
-    $('img').css('cursor', 'pointer');
-
-    // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
-    imageEl.attr('src', JSON.parse(localStorage.getItem(id)).image);
-    imageEl.attr('alt', 'food image')
-    // imageEl.attr('class', suggestions[index].recipeId)
-    imageEl.attr('data-open', `spoonacular-${id}`) //added for modal
-    headerEl.text(JSON.parse(localStorage.getItem(id)).title)
-    containerEl.append(headerEl);
-    containerEl.append(imageEl);
-    $('#recipe-container').append(containerEl);
-
-
-
-  //   $('#recipe-container').children().eq(index).children('img').on('click', function (event) {  //click event for recipes images
-  //     //at the click of the event target, application will take you to the detailed recipe
-  //     //by extracting the recipe ID and using it in the next API call
-  //     recipeInfo(event.target.className)
-  //     localStorage.setItem("chosenMeal", JSON.stringify(event.target.className));
-  //     localStorage.setItem('responseForBackBtn', JSON.stringify(suggestions));
-
-  //     document.location.assign(redirectUrl)
-  //     took out because we do not want to navigate to new page, but rather modal
-
-  //   })
-  // }
+  var containerEl = $('<div>');
+  containerEl.addClass('recipe');
+  containerEl.attr('id', `result${id}`)
+  var headerEl = $('<h4>');
+  headerEl.attr('style', 'font-family:Courgette, cursive; color:black')
+  var imageEl = $('<img>');
+  $('img').css('cursor', 'pointer');
+  // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
+  imageEl.attr('src', JSON.parse(localStorage.getItem(id)).image);
+  imageEl.attr('alt', 'food image')
+  // imageEl.attr('class', suggestions[index].recipeId)
+  imageEl.attr('data-open', `result${result}`) //added for modal
+  headerEl.text(JSON.parse(localStorage.getItem(id)).title)
+  containerEl.append(headerEl);
+  containerEl.append(imageEl);
+  $('#recipe-container').append(containerEl);
   console.log("these are the suggestions", id)
 
-// }
+  // }
 }
+
 //funciton that builds the info of the actual chosen recipe .... this needs to be inside the modal
-function buildChosenRecipeModal(detailedRecipe) {
+function buildChosenRecipeModal(localStoredID) {
   var containerEl = $('<div>');
-  containerEl.attr('class', 'instructions');
+  // containerEl.attr('style', 'padding:10%')
   var headerEl = $('<h4>');
   headerEl.attr('style', 'font-family: Courgette, cursive; text-decoration: underline; color: black; background-color:none ; display: grid; width:100%;')
   var ulEl = $('<ul>');
   var imageEl = $('<img>');
   imageEl.attr('style', ' -webkit-transform: none;-ms-transform: none;transform: none;transition: none;')
-  imageEl.attr('src', detailedRecipe.image);
+  imageEl.attr('src', JSON.parse(localStorage.getItem(localStoredID)).image);
   imageEl.attr('alt', 'food image');
-  headerEl.text(detailedRecipe.title);
+  headerEl.text(JSON.parse(localStorage.getItem(localStoredID)).title);
+  var header2El = $('<h4>Instructions</h4>');
+  header2El.attr('style', 'color: black; background: #b8a745; ; display: grid; width:100%');
   containerEl.append(headerEl);
   containerEl.append(imageEl);
   containerEl.append(ulEl);
-  containerEl.attr('style', 'padding:10%')
-  for (let index = 0; index < detailedRecipe.extendedIngredients.length; index++) {
+  containerEl.append(header2El);
+  for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
     ingredientsliEl.attr('style', 'color: black; background-color:none ; font-size:20px; display: grid; width:100%;')
-    ingredientsliEl.text(detailedRecipe.extendedIngredients[index].original)
+    ingredientsliEl.text(JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients[index].original)
     ulEl.append(ingredientsliEl)
   }
-  buildinstructions(detailedRecipe.id);
-  //changed to modal id to append to modal
-  $('#result1').append(containerEl)
-
-}
-
-
-function buildinstructions(id) {
-  $.ajax({
-    url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=5d31bfe82c014672b108b9646a510b3f`,
-    method: 'GET',
-  })
-    .then(function (response) { // runs if no error happens
-      console.log('Ajax Reponse from buildinstructions\n-------------');
-      console.log(response);
-      var header2El = $('<h4>Instructions</h4>');
-      header2El.attr('style', 'color: black; background: #b8a745; ; display: grid; width:100%');
-      $('.instructions').append(header2El);
-      if (response.length === 0) {
-        console.log('it has no instructions')
-      } else {
-        var ulEl = $('<ul>');
-        $('.instructions').append(ulEl);
-        for (let index = 0; index < response[0].steps.length; index++) {
-          var ingredientsliEl = $('<li>')
-          ingredientsliEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:100%')
-          ingredientsliEl.text(`${response[0].steps[index].number}. ${response[0].steps[index].step}`)
-          ulEl.append(ingredientsliEl)
-        }
-      }
-    })
-    .catch(function (error) { // runs if an error happens
-      console.log('error:', error);
-    });
-}
-
-
-//clear history
-function showClear() {
-  if (searchHistoryList.text() !== "") {
-    clearHistoryBtn.removeClass("hide");
+  var ulInstructionsEl = $('<ul>');
+  for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps.length; index++) {
+    var ingredientsliEl = $('<li>')
+    ingredientsliEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:100%')
+    ingredientsliEl.text(`${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].number}. ${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].step}`)
+    ulInstructionsEl.append(ingredientsliEl)
   }
-}
+  containerEl.append(ulInstructionsEl);
+    $(`#result${result}`).append(containerEl)
+    result++;
+  }
 
+  //clear history
+  function showClear() {
+    if (searchHistoryList.text() !== "") {
+      clearHistoryBtn.removeClass("hide");
+    }
+  }
 
-
-
-
-
-
-
-
-// function for reset button//
-resetButtonEl.on('click', function () { 
-  localStorage.clear();
-  location.reload();
-});
+  // function for reset button//
+  resetButtonEl.on('click', function () {
+    localStorage.clear();
+    location.reload();
+  });
 
