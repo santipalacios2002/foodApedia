@@ -75,7 +75,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=11f04c6602d54085bb3e661530e37699&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -115,7 +115,7 @@ function searchedRecipes(recipesBulk) {
 
 function recipeInfo(iD) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
+    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=11f04c6602d54085bb3e661530e37699`,
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
@@ -170,21 +170,21 @@ function buildChosenRecipeModal(localStoredID) {
   imageEl.attr('alt', 'food image');
   headerEl.text(JSON.parse(localStorage.getItem(localStoredID)).title);
   var header2El = $('<h4>Instructions</h4>');
-  header2El.attr('style', 'color: black; background: #b8a745; ; display: grid; width:100%');
+  header2El.attr('style', 'color: black ; display: grid; width:100%');
   containerEl.append(headerEl);
   containerEl.append(imageEl);
   containerEl.append(ulEl);
   containerEl.append(header2El);
   for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
-    ingredientsliEl.attr('style', 'color: black; background-color:none ; font-size:20px; display: grid; width:100%;')
+    ingredientsliEl.attr('style', 'color: black;  ; font-size:20px; display: grid; width:100%;')
     ingredientsliEl.text(JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients[index].original)
     ulEl.append(ingredientsliEl)
   }
   var ulInstructionsEl = $('<ul>');
   for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps.length; index++) {
     var ingredientsliEl = $('<li>')
-    ingredientsliEl.attr('style', 'color: black; background:#b8a745 ; display: grid; width:100%')
+    ingredientsliEl.attr('style', 'color: black ; display: grid; width:100%')
     ingredientsliEl.text(`${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].number}. ${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].step}`)
     ulInstructionsEl.append(ingredientsliEl)
   }
