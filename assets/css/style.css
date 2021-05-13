@@ -44,21 +44,21 @@ li {
     font-family: 'Courgette', cursive;
     font-size: 30px;
     border:2px solid black;
-     background-color: rgb(255, 204, 0);
-     box-shadow: 2px 2px 20px rgb(3, 21, 24) ;
-     border-radius: 10%;
-     padding:40px;
-     margin-left: 43%;
-     margin-top: 10%;
-     transition: 1s ease;
+    background-color: rgb(255, 204, 0);
+    box-shadow: 2px 2px 20px rgb(3, 21, 24) ;
+    border-radius: 10%;
+    padding:40px;
+    margin-left: 43%;
+    margin-top: 10%;
+    transition: 1s ease;
      
  }
 
 #start:hover{
     -webkit-transform: scale(1.2);
--ms-transform: scale(1.2);
-transform: scale(1.2);
-transition: 1s ease;
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 1s ease;
 
 }
 iframe{
@@ -73,7 +73,7 @@ iframe{
     font-size: 40px;
  }
  .container p{
-     color:beige;
+    color:beige;
     font-size: 20px;
  }
  
@@ -84,24 +84,15 @@ iframe{
  }
  
 .row {
-      font-family: Arial;
+    font-family: Arial;
     font-size: 18px;
     line-height: 30px;
     font-weight: bold;
     padding: 40px;
-    border-radius: 10px;
-    box-shadow:
-    
-      inset #3b3201 0 0 0 6px, 
-      inset #635d3c 0 0 0 8px, 
-      inset #726624 0 0 0 12px,
-      inset #978e4f 0 0 0 15px,
-      inset #dbc64c 0 0 0 18px,  
-      inset #f8f4dd 0 0 0 22px;
-background-color: #b8a745;
-border-right:3px solid rgb(207, 194, 149);
-   border-left: 3px solid rgb(207, 194, 149) ;
-   border-bottom: 3px solid rgb(207, 194, 149)
+    background-color: #b8a745;
+    border-right:3px solid rgb(207, 194, 149);
+    border-left: 3px solid rgb(207, 194, 149) ;
+    border-bottom: 3px solid rgb(207, 194, 149)
 
 
 }
@@ -110,17 +101,17 @@ border-right:3px solid rgb(207, 194, 149);
 img{
     transition: 1s ease;
     border: 3px solid black;
-     box-shadow: 10px 10px 10px black;
-     gap: 100px;
-      margin-bottom: 50px;
+    box-shadow: 10px 10px 10px black;
+    gap: 100px;
+    margin-bottom: 50px;
      
      
 }
 img:hover{
     -webkit-transform: scale(1.2);
--ms-transform: scale(1.2);
-transform: scale(1.2);
-transition: 1s ease;
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 1s ease;
 
 }
 
@@ -146,10 +137,8 @@ transition: 1s ease;
     display: flex;
     align-items: center;
     transition: all 0.4s ease-out;
-        opacity: 0;
-
-    
-        opacity: 1;
+    opacity: 0;
+    opacity: 1;
     
 }
 .lead{
@@ -161,17 +150,11 @@ transition: 1s ease;
 
 
 .menu{
- 
-
     background-color:none ; 
     display: flex;
- padding:10%;
+    padding:10%;
     align-items: center;
-   
-    
-
-    
-}
+   }
 
 #back-ground{
     height: 2500px;
@@ -182,10 +165,11 @@ transition: 1s ease;
 
 .button-cont   {
 
-display: grid;
-gap:10px; 
+    display: grid;
+    gap:10px; 
 
  }
+
  .top-btn:hover{
     background-color: rgb(221, 176, 28);
  }
@@ -194,13 +178,10 @@ footer{
     
     transition: 1s ease;
     text-align: center;
-background-color: beige;
+    background-color: beige;
 }
 
-
-
 a:hover{
-    
-        background-color: rgb(221, 176, 28);
+    background-color: rgb(221, 176, 28);
       
 }
