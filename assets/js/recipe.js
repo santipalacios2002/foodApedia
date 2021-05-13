@@ -46,8 +46,9 @@ function buildChosenRecipeEl(detailedRecipe) {
     ulEl.append(ingredientsliEl)
   }
   buildinstructions(detailedRecipe.id);
-  $('.row').append(containerEl)
-  // $(containerEl).insertBefore('footer')
+  //changed to modal id to append to modal
+  $('#exampleModal1').append(containerEl)
+
 }
 
 function buildinstructions(id) {
