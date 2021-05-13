@@ -15,10 +15,13 @@ $('#clickme').on('click', function () {
     // check if the ingridientsInput is empty
     if ($('#ingredientsInput').val() == "") {
       // if ingridentsInput is empty then give user feedback alert .... this needs to be changed to modal ''''SAVANNAH
-      alert('please enter the ingredient')
-      return;
+      $('#addListItems').foundation('open');
+
+      // alert('please enter the ingredient')
+      return ;
     }
     // append food item to item list
+    
     var ingredientInput = $('#ingredientsInput').val();
     buildIngredientli(ingredientInput)
     // add food item to mealIngredients gloabal array
@@ -27,7 +30,7 @@ $('#clickme').on('click', function () {
     $('#ingredientsInput').val('');
   } else {
     // If mealIngredients is greater than 5 give user feedback alert .... this needs to be changed to modal '''''SAVANNAH
-    alert('you can only enter 5 ingredients')
+    $('#fiveIngredients').foundation('open');
     $('#ingredientsInput').val('');
   }
   console.log(mealIngredients)
@@ -52,6 +55,15 @@ $('#searchRecipeBtn').click(apiRecipes);
 
 // This function calls the Spoonacular API
 function apiRecipes() {
+  if (mealIngredients.length === 0) {
+    $('#addListItems').foundation('open');
+    return
+  } 
+  if ($('#recipe-container').children().length !== 0) {
+    $('#resetEverything').foundation('open');
+    return
+  }
+  $('.hidden-container').attr('hidden', false)
   console.log('worked!')
   //initialize string of ingredients to be used on API
   var ingredients = '';
@@ -63,7 +75,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=7b25b6057a3f4e83b5f38c6173d65341&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -103,7 +115,7 @@ function searchedRecipes(recipesBulk) {
 
 function recipeInfo(iD) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=7b25b6057a3f4e83b5f38c6173d65341`,
+    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=aa7dd6ad9ad44ccea57351e7abb0daaf`,
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
@@ -126,7 +138,6 @@ $('#back').on('click', function () {
 
 //function that builds the recipe elements for the modal to be called ..... this function needs to have the data-open
 function buildRecipesModal(id) {
-  // for (let index = 0; index < suggestions.length; index++) {
   var containerEl = $('<div>');
   containerEl.addClass('recipe');
   containerEl.attr('id', `result${id}`)
@@ -144,8 +155,6 @@ function buildRecipesModal(id) {
   containerEl.append(imageEl);
   $('#recipe-container').append(containerEl);
   console.log("these are the suggestions", id)
-
-  // }
 }
 
 //funciton that builds the info of the actual chosen recipe .... this needs to be inside the modal
@@ -153,7 +162,7 @@ function buildChosenRecipeModal(localStoredID) {
   var containerEl = $('<div>');
   // containerEl.attr('style', 'padding:10%')
   var headerEl = $('<h4>');
-  headerEl.attr('style', 'font-family: Courgette, cursive; text-decoration: underline; color: black; background-color:none ; display: grid; width:100%;')
+  headerEl.attr('style', 'font-family: Courgette, cursive; text-decoration: underline; color: black; background-color:none ; display: grid; width:100%; justify-content: center;')
   var ulEl = $('<ul>');
   var imageEl = $('<img>');
   imageEl.attr('style', ' -webkit-transform: none;-ms-transform: none;transform: none;transition: none;')
@@ -197,3 +206,18 @@ function buildChosenRecipeModal(localStoredID) {
     location.reload();
   });
 
+$('.reveal').on('click', function(event){
+  console.log(event)
+  console.log(event.target)
+})
+
+function printDiv(recipeChosen) {
+  var divContents = document.getElementById(recipeChosen).innerHTML;
+  var a = window.open('', '', 'height=800, width=800');
+  a.document.write('<html>');
+  a.document.write('<body ><br>');
+  a.document.write(divContents);
+  a.document.write('</body></html>');
+  a.document.close();
+  a.print();
+}
