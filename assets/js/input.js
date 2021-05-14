@@ -177,7 +177,7 @@ function buildChosenRecipeModal(localStoredID) {
   containerEl.append(header2El);
   for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
-    ingredientsliEl.attr('style', 'color: black;  ; font-size:20px; display: grid; width:100%;')
+    ingredientsliEl.attr('style', 'color: black;  ; font-size:30px; display: grid; width:100%;')
     ingredientsliEl.text(JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients[index].original)
     ulEl.append(ingredientsliEl)
   }
