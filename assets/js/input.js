@@ -7,6 +7,15 @@ var resetButtonEl = $('#reset');
 var mealIngredients = [];
 var result = 1;
 
+
+//added click action on ingredient input
+$('#ingredientsInput').on('keyup', function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    $('#clickme').click();
+   }
+});
+
 //When user adds an ingredient event listener for the "add to list" btn
 $('#clickme').on('click', function () {
   //check how long the mealIngriedents is
