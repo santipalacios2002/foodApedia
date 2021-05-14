@@ -69,7 +69,7 @@ function apiRecipes() {
   for (let index = 0; index < mealIngredients.length; index++) {
     ingredients = ingredients.concat(`${mealIngredients[index]},`);
   }
-  //ajax calls the URL API and gets the info
+  //ajax calls the URL API and gets the info//
   $.ajax({
     //use URL with mealIngredients from above
     url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=11f04c6602d54085bb3e661530e37699&ingredients=${ingredients}&number=4&ranking=1`,
@@ -170,7 +170,7 @@ function buildChosenRecipeModal(localStoredID) {
   containerEl.append(header2El);
   for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients.length; index++) {
     var ingredientsliEl = $('<li>')
-    ingredientsliEl.attr('style', 'color: black;  ; font-size:20px; display: grid; width:100%;')
+    ingredientsliEl.attr('style', 'color: black;  ; font-size:30px; display: grid; width:100%;')
     ingredientsliEl.text(JSON.parse(localStorage.getItem(localStoredID)).extendedIngredients[index].original)
     ulEl.append(ingredientsliEl)
   }
