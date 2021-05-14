@@ -1,51 +1,68 @@
-# Project 1: FOODAPEDIA
+# Project 1: FoodApedia
 
+For the love of food, three individuals - Santiago, Savannah, and Fatimah - have come together to develop an application that will revolutionize the way you eat. This application is built around the excess ingredients that you already have hanging around in your kitchen, but you have no idea what to make from them. This application will create a meal based on the 5, or less,  ingredients that you input in the selection process. Turn your daily items into an enjoyable meal and save your pockets from buying takeout!
 
-<h2 style= "color: #00FF00; font-weight: bold;">
-  Project Proposal
-</h2>
+## Application Requirements Met...
 
+* Use a CSS framework other than Bootstrap.
 
-Using server APIs from Recipe - Food - Nutrition, we will be building an application that will provide recipes/ideas based on the list of ingridients that he user provide. Once you get the recepi of your choice, foodapedia will suggest the wine to pair with your meal... ENJOY!! 
+* Be deployed to GitHub Pages.
 
-<br />
+* Be interactive (i.e., accept and respond to user input).
 
-## :heavy_check_mark: User Story
+* Use at least two server-side APIs.
 
+* Does not use alerts, confirms, or prompts (use modals).
 
-* As a user, I can enter a set of ingredients that they want to work with and the application will provide suggestions of meals or recipes.
+* Use client-side storage to store persistent data.
+* Be responsive.
 
-* As a user, when they click on the recipe/meal it will prompt you to a picture of it and the application will suggest wines to pair with your meal.
+* Have a polished UI.
 
-* For future realeases, the applicaiton will provide, dietary options, location of the nearest grocey/liquor stores. 
+* Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
 
-<br />
+* Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
-## :heavy_check_mark: Wireframe
+## FoodApedia Presentation
 
-This is the rough proposed layout of our web app:
+Here is our link to our launched site: [FoodApedia](https://santipalacios2002.github.io/foodApedia/)
 
-![wireframe](./assets/images/wireframe.jpg)
+Here is a link to our original proposal: [FoodApedia Proposal](/proposal.md)
 
-<br />
+### Homepage
+#
 
-## :heavy_check_mark: APIs to be used
+When the user first enters our application, they will see a well polished and inviting site. There is an about us and contact portion for the user to access as well. The user will then click 'Let's Begin' to proceed to the rest of the site. 
 
-The proposed APIs that we will be using (subject to change ) will be from https://spoonacular.com/. 
+![FoodApedia Homepage ](assets/images/homepage.png)
 
-The initial APIs that will be feeding our application will be:
+### Ingredients List & Meal Search
+#
 
-* https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients
-* https://spoonacular.com/food-api/docs#Get-Recipe-Information
-* https://spoonacular.com/food-api/docs#Get-Similar-Recipes
-<br />
+Users will then have the opportunity to add up to five ingredients. These ingredients will be displayed on screen. Users have the opportunity to delete ingredients if needed before pressing the "Search for Recipe Ideas" button. Once this button is pressed, it will populate four meal possibilities to make based on the ingredients listed. 
 
-## :heavy_check_mark: Rough breakdown of tasks
+![FoodApedia Ingredients List ](assets/images/searchMeal.gif)
 
-We haven't finalized our taks breakdown but we are planning on doing it by features if possible:
+You will also see that there are some safeguard modals enabled to help guide users during application usage. 
 
-Tasks | #1 | #2 | #3 | #4
---- | ---- | --- | --- | --- 
-HTML  | build base HTML | add frameworks to be used | replicate wireframe | use Foundation framework for styling
-JS | build global variables | build functions to call APIs  | build objects to be used from API in our app
-CSS | build base CSS |  add reset CSS | 
+![FoodApedia Modal Alerts ](assets/images/modals.gif)
+
+### Recipe Display
+#
+
+Users can then click on a recipe of their choice, and the recipe modal will diplay all ingredients and a step by step process to make the meal of their choice. Users may also use the print function to print the recipe for keepsake later. 
+
+![FoodApedia Recipe Display](assets/images/recipeModal.png)
+<br></br>
+![FoodApedia Print Recipe](assets/images/printRecipe.png)
+<br></br>
+
+### Lessons Learned
+#
+* Foundations framework
+
+* API practice
+
+* Modals
+
+* Working as a team within GitHub
