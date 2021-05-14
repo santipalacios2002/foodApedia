@@ -61,11 +61,15 @@ li {
     transition: 1s ease;
 
 }
+
+
 iframe{
     border:5px solid beige;
 }
 
-
+#about-us{
+    margin-left: 30px;
+}
  .container h1{
     font-family: 'Courgette', cursive;
     margin-left: 0px;
@@ -73,8 +77,11 @@ iframe{
     font-size: 40px;
  }
  .container p{
+     margin-left: 30px;
+     margin-right: 30px;
     color:beige;
     font-size: 20px;
+    text-indent: 50px;
  }
  
 
