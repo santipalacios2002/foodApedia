@@ -14,22 +14,19 @@ $('#clickme').on('click', function () {
   if (mealIngredients.length < 5) {
     // check if the ingridientsInput is empty
     if ($('#ingredientsInput').val() == "") {
-      // if ingridentsInput is empty then give user feedback alert .... this needs to be changed to modal ''''SAVANNAH
+      // if ingridentsInput is empty then give user feedback modal
       $('#addListItems').foundation('open');
-
-      // alert('please enter the ingredient')
       return ;
     }
     // append food item to item list
-    
     var ingredientInput = $('#ingredientsInput').val();
     buildIngredientli(ingredientInput)
-    // add food item to mealIngredients gloabal array
+    // add food item to mealIngredients global array
     mealIngredients.push($('#ingredientsInput').val())
     //resets the placeholder for the ingredient input
     $('#ingredientsInput').val('');
   } else {
-    // If mealIngredients is greater than 5 give user feedback alert .... this needs to be changed to modal '''''SAVANNAH
+    // If mealIngredients is greater than 5 give user feedback modal
     $('#fiveIngredients').foundation('open');
     $('#ingredientsInput').val('');
   }
@@ -131,12 +128,11 @@ function recipeInfo(iD) {
 }
 
 //event listener when "Lets begin" button is pressed and user gets redirected to the input page
-
 $('#back').on('click', function () {
   document.location.replace(redirectUrl)
 })
 
-//function that builds the recipe elements for the modal to be called ..... this function needs to have the data-open
+//function that builds the recipe elements for the modal to be called
 function buildRecipes(id) {
   var containerEl = $('<div>');
   containerEl.addClass('recipe');
@@ -145,10 +141,8 @@ function buildRecipes(id) {
   headerEl.attr('style', 'font-family:Courgette, cursive; color:black')
   var imageEl = $('<img>');
   $('img').css('cursor', 'pointer');
-  // imageEl.attr('style', 'border: 3px solid black; box-shadow: 10px 10px 10px black; display: grid; gap:30px')
   imageEl.attr('src', JSON.parse(localStorage.getItem(id)).image);
   imageEl.attr('alt', 'food image')
-  // imageEl.attr('class', suggestions[index].recipeId)
   imageEl.attr('data-open', `result${result}`) //added for modal
   headerEl.text(JSON.parse(localStorage.getItem(id)).title)
   containerEl.append(headerEl);
@@ -157,10 +151,9 @@ function buildRecipes(id) {
   console.log("these are the suggestions", id)
 }
 
-//funciton that builds the info of the actual chosen recipe .... this needs to be inside the modal
+//funciton that builds the info of the actual chosen recipe
 function buildChosenRecipeModal(localStoredID) {
   var containerEl = $('<div>');
-  // containerEl.attr('style', 'padding:10%')
   var headerEl = $('<h4>');
   headerEl.attr('style', 'font-family: Courgette, cursive; text-decoration: underline; color: black; background-color:none ; display: grid; width:100%; justify-content: center;')
   var ulEl = $('<ul>');
@@ -182,22 +175,27 @@ function buildChosenRecipeModal(localStoredID) {
     ulEl.append(ingredientsliEl)
   }
   var ulInstructionsEl = $('<ul>');
-  for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps.length; index++) {
+  if (JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps.length === 0 ) {
     var ingredientsliEl = $('<li>')
+    var anchor = $('<a>')
     ingredientsliEl.attr('style', 'color: black ; display: grid; width:100%')
-    ingredientsliEl.text(`${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].number}. ${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].step}`)
+    ingredientsliEl.text(`For more information, please visit: `)
+    ingredientsliEl.append(anchor)
+    anchor.text('This website')
+    anchor.attr('href', `${JSON.parse(localStorage.getItem(localStoredID)).sourceUrl}`)
+    anchor.attr('target', '_blank')
     ulInstructionsEl.append(ingredientsliEl)
+  } else {
+    for (let index = 0; index < JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps.length; index++) {
+      var ingredientsliEl = $('<li>')
+      ingredientsliEl.attr('style', 'color: black ; display: grid; width:100%')
+      ingredientsliEl.text(`${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].number}. ${JSON.parse(localStorage.getItem(localStoredID)).analyzedInstructions[0].steps[index].step}`)
+      ulInstructionsEl.append(ingredientsliEl)
+    }
   }
   containerEl.append(ulInstructionsEl);
     $(`#result${result}`).append(containerEl)
     result++;
-  }
-
-  //clear history
-  function showClear() {
-    if (searchHistoryList.text() !== "") {
-      clearHistoryBtn.removeClass("hide");
-    }
   }
 
   // function for reset button//
@@ -206,7 +204,7 @@ function buildChosenRecipeModal(localStoredID) {
     location.reload();
   });
 
-
+//function that prints the recipe
 function printDiv(recipeChosen) {
   var divContents = document.getElementById(recipeChosen).innerHTML;
   var a = window.open('', '', 'height=800, width=800');
