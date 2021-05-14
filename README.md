@@ -27,7 +27,7 @@ For the love of food, three individuals - Santiago, Savannah, and Fatimah - have
 
 Here is our link to our launched site: [FoodApedia](https://santipalacios2002.github.io/foodApedia/)
 
-Here is a link to our original proposal: [FoodApedia Proposal](/proposal.md)
+Here is our link to our original proposal: [FoodApedia Proposal](/proposal.md)
 
 ### Homepage
 #
