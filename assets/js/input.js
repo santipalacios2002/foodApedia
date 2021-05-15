@@ -76,7 +76,7 @@ function apiRecipes() {
   //ajax calls the URL API and gets the info//
   $.ajax({
     //use URL with mealIngredients from above
-    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=11f04c6602d54085bb3e661530e37699&ingredients=${ingredients}&number=4&ranking=1`,
+    url: `https://api.spoonacular.com/recipes/findByIngredients?apiKey=c163ad42a8f44434961017e44052c438&ingredients=${ingredients}&number=4&ranking=1`,
     method: 'GET',
   })
     //response = info gathered from API
@@ -112,7 +112,7 @@ function searchedRecipes(recipesBulk) {
 
 function recipeInfo(iD) {
   $.ajax({
-    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=11f04c6602d54085bb3e661530e37699`,
+    url: `https://api.spoonacular.com/recipes/${iD}/information?apiKey=c163ad42a8f44434961017e44052c438`,
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
