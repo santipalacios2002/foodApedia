@@ -7,7 +7,6 @@ var resetButtonEl = $('#reset');
 var mealIngredients = [];
 var result = 1;
 
-
 //added click action on ingredient input
 $('#ingredientsInput').on('keyup', function(event) {
   if (event.keyCode === 13) {
@@ -39,7 +38,6 @@ $('#clickme').on('click', function () {
     $('#fiveIngredients').foundation('open');
     $('#ingredientsInput').val('');
   }
-  console.log(mealIngredients)
 })
 
 //function that builds the ingredient element
@@ -49,7 +47,6 @@ function buildIngredientli(ingredient) {
   $('#gap').on('click', '.close-button', function (event) {
     var deletedIngredient = event.target.classList[1];
     //if deletedIngredient exists in the mealIngredients then take it out of the mealIngredients array
-    console.log(mealIngredients.indexOf(deletedIngredient))
     if (mealIngredients.indexOf(deletedIngredient) > -1) {
       mealIngredients.splice(mealIngredients.indexOf(deletedIngredient), 1);
     }
@@ -70,10 +67,8 @@ function apiRecipes() {
     return
   }
   $('.hidden-container').attr('hidden', false)
-  console.log('worked!')
   //initialize string of ingredients to be used on API
   var ingredients = '';
-  console.log(mealIngredients)
   //use mealIngredients to build string to be used for ingredients for the Ajax call
   for (let index = 0; index < mealIngredients.length; index++) {
     ingredients = ingredients.concat(`${mealIngredients[index]},`);
@@ -86,13 +81,10 @@ function apiRecipes() {
   })
     //response = info gathered from API
     .then(function (response) { // runs if no error happens
-      console.log('Ajax Reponse from apiRecipes\n-------------');
-      console.log(response);
       // call searchedRecipes and give it the response
       searchedRecipes(response);
     })
     .catch(function (error) { // runs if an error happens
-      console.log('error:', error);
     });
 }
 
@@ -109,7 +101,6 @@ function searchedRecipes(recipesBulk) {
       'name': recipesBulk[index].title,
       'recipeId': recipesBulk[index].id
     }); //array for the images of the searched recipes
-    console.log(recipes)
     localStorage.setItem("recipes", JSON.stringify(recipes))
   }
   for (let index = 0; index < recipes.length; index++) {
@@ -125,14 +116,11 @@ function recipeInfo(iD) {
     method: 'GET',
   })
     .then(function (response) { // runs if no error happens
-      console.log('Ajax Reponse from recipeInfo\n-------------');
-      console.log(response);
       localStorage.setItem(`${iD}`, JSON.stringify(response));
       buildRecipes(`${iD}`)
       buildChosenRecipeModal(`${iD}`)
     })
     .catch(function (error) { // runs if an error happens
-      console.log('error:', error);
     });
 }
 
@@ -157,7 +145,6 @@ function buildRecipes(id) {
   containerEl.append(headerEl);
   containerEl.append(imageEl);
   $('#recipe-container').append(containerEl);
-  console.log("these are the suggestions", id)
 }
 
 //funciton that builds the info of the actual chosen recipe
